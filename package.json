@@ -1,0 +1,10 @@
+{
+  "name": "solid-me-task-counter",
+  "version": "1.0.0",
+  "description": "A simple task counter web app",
+  "scripts": {
+    "test": "node --test test/utils.test.js",
+    "lint:js": "node --check app.js utils.js"
+  },
+  "private": true
+}
