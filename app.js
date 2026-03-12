@@ -31,14 +31,7 @@ function saveTasks() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
 }
 
-// ─── Helpers ──────────────────────────────────────────────────────────────────
-function generateId() {
-  return Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
-}
-
-function clamp(value, min, max) {
-  return Math.min(Math.max(value, min), max);
-}
+// ─── Helpers (clamp, generateId, escapeHtml live in utils.js) ─────────────────
 
 // ─── Rendering ────────────────────────────────────────────────────────────────
 function renderTasks() {
@@ -98,16 +91,6 @@ function createTaskCard(task) {
   card.querySelector('.btn-delete').addEventListener('click', () => deleteTask(task.id));
 
   return card;
-}
-
-/** Minimal HTML escaping to prevent XSS from user-supplied task names */
-function escapeHtml(str) {
-  return str
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
 }
 
 // ─── Actions ──────────────────────────────────────────────────────────────────
